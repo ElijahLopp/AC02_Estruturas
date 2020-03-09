@@ -739,5 +739,4 @@ def explica_erro(album1,album2):
         print('A primeira fotografia que sobrou:')
         print(album1[menor_diferente])
 
-
 # runTests()
