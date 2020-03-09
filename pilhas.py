@@ -26,7 +26,7 @@ Continuando o exemplo, tinhamos [1,2].
 Digamos que fazemos push(4), push(8). Como está a pilha? 
 Responda na forma de uma lista na variavel pilha1
 '''
-pilha1=[]
+pilha1=[1,2,4,8]
 
 '''
 EXERCICIO
@@ -35,7 +35,7 @@ Fazemos push(9),push(8),pop(),push(7),push(6),pop().
 
 Como está a pilha? Responda na variavel pilha2.
 '''
-pilha2=[]
+pilha2=[9,7]
 
 '''
 EXERCICIO
@@ -43,7 +43,7 @@ Novamente, começamos com uma pilha vazia.
 E se fizermos 
 push(9),push(8),push(7),push(6),pop(),pop(),pop() ?. 
 '''
-pilha3=[]
+pilha3=[9]
 
 
 '''
@@ -77,7 +77,9 @@ Crie uma função poe_pilha, que recebe uma pilha e um número
 e coloca o número no topo da pilha
 '''
 def poe_pilha(pilha,numero):
-    pass #tire esse pass e escreva o codigo
+    aux_stack = pilha
+    aux_stack.append(numero)
+    return aux_stack
 
 '''
 EXERCICIO
@@ -87,7 +89,7 @@ estava no topo e retorna ele
 Exemplo: se a pilha era [1,2,3], a pilha deve ficar sendo [1,2] e a função deve retornar 3
 '''
 def tira_pilha(pilha):
-    pass #tire esse pass e escreva o codigo
+    return pilha.pop()
 
 '''
 EXPLICAÇÃO
@@ -140,7 +142,9 @@ Faça uma função pilha_vazia que retorna:
      False se não está
 '''
 def pilha_vazia(pilha):
-    pass #tire esse pass e escreva o codigo
+    if len(pilha) == 0:
+        return True
+    return False
 
 
 '''
@@ -164,9 +168,12 @@ def pilha_letras(texto):
 '''
 
 def pilha_letras(texto):
-    for letra in texto: 
-        print(letra)
-        print('ola')
+    aux_stack = []
+    for letra in texto:
+        aux_stack.append(letra)
+        if len(aux_stack) != 0:
+            fotografa(aux_stack)
+    return aux_stack
 
 '''
 EXERCICIO
@@ -183,9 +190,19 @@ Sua função deve retornar a ultima pilha
 '''
 
 def menos_o_d(texto):
+    aux_stack = []
     for letra in texto: 
-        print(letra)
-        print('ola')
+        if letra == "d":
+            if len(aux_stack) == 0:
+                fotografa(aux_stack)
+            else:
+                aux_stack.pop()
+                fotografa(aux_stack)
+        else:
+            aux_stack.append(letra)
+            fotografa(aux_stack)
+    return aux_stack
+
 
 '''
 EXERCICIO: Uma coisa estranha da função menos_o_d, que talvez você tenha notado,
@@ -216,7 +233,13 @@ Faça uma função encaixa, que recebe duas strings, um "abre" e um "fecha", e r
 True se eles encaixam (False se não encaixarem)
 '''
 def encaixa(abre, fecha):
-    pass #esse pass tb é pra tirar :P
+    dict_stack = {"parentese":["()"], "colchete":["[]"], "chave":["{}"]}
+    conc1 = abre+fecha
+    for key in dict_stack.keys():
+        for value in dict_stack[key]:
+            if conc1 == value:
+                return True
+    return False
 
 '''
 EXPLICACAO
@@ -272,7 +295,7 @@ O que está na pilha, quando o algoritmo lê a letra "a"?
 
 Responda na variável pilha_balanceada1
 '''
-pilha_balanceada1=[]
+pilha_balanceada1=["(", "(", "{"]
 '''
 EXERCICIO
 
@@ -282,7 +305,7 @@ O que está na pilha, quando o algoritmo lê a letra "a"?
 
 Responda na variável pilha_balanceada2
 '''
-pilha_balanceada2=[]
+pilha_balanceada2=["("]
 '''
 EXERCICIO
 
@@ -292,7 +315,7 @@ O que está na pilha, quando o algoritmo lê a letra "a"?
 
 Responda na variável pilha_balanceada3
 '''
-pilha_balanceada3=[]
+pilha_balanceada3=["(", "{"]
 
 '''
 EXERCICIO
@@ -310,7 +333,12 @@ Não precisa se preocupar com nenhum outro caractere
 
 
 def balanceada(string):
-    pass #outro pass pra vc tirar e escrever uma função
+    # aux_string = list(string)
+    # stre = ''
+    # for x in range(0,len(string)):
+    #     for y in range(1, len(string)):
+    pass
+
 '''
 EXERCICIO
 
@@ -391,13 +419,18 @@ class Pilha():
         return self.lista.pop()
 
     def tamanho(self):
-        pass #implemente!
+        return len(self.lista)
 
     def top(self):
-        pass #implemente!
+        for x in self.lista:
+            aux = x
+        return x
 
     def vazia(self):
-        pass #implemente!
+        if len(self.lista) == 0:
+            return True
+        else:
+            return False
 
 '''
     Veja abaixo como usar os métodos já fornecidos
@@ -707,3 +740,4 @@ def explica_erro(album1,album2):
         print(album1[menor_diferente])
 
 
+# runTests()
