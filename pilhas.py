@@ -333,10 +333,6 @@ Não precisa se preocupar com nenhum outro caractere
 
 
 def balanceada(string):
-    # aux_string = list(string)
-    # stre = ''
-    # for x in range(0,len(string)):
-    #     for y in range(1, len(string)):
     pass
 
 '''
@@ -388,8 +384,7 @@ dicas:
     
 '''
 def palindromo(string):
-    return True
-
+    pass
 '''
 EXERCICIO
 
@@ -739,4 +734,4 @@ def explica_erro(album1,album2):
         print('A primeira fotografia que sobrou:')
         print(album1[menor_diferente])
 
-# runTests()
+runTests()
