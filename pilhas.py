@@ -333,7 +333,33 @@ Não precisa se preocupar com nenhum outro caractere
 
 
 def balanceada(string):
-    pass
+    stack1 = list(string)
+    stack2 = list(string)
+    del stack2[0]
+    lst_std = []
+    lst_ok = []
+    flag = False   
+    for l1 in range(len(stack1)):
+        l2 = 0
+        while True:
+            if encaixa(stack1[l1], stack2[l2]):
+                lst_ok.append(stack1[l1])
+                lst_ok.append(stack2[l2])
+                stack2.pop(l2)
+                break
+            else:
+                lst_std.append(l1)
+                break
+    return lst_ok
+
+
+
+
+# lst = [1,2,3]
+# print(lst.pop(0))
+# print(lst)
+# print(lst[0])
+print(balanceada("([])"))
 
 '''
 EXERCICIO
@@ -734,4 +760,4 @@ def explica_erro(album1,album2):
         print('A primeira fotografia que sobrou:')
         print(album1[menor_diferente])
 
-runTests()
+# runTests()
